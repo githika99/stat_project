@@ -233,8 +233,7 @@ write(tmp, "Inmate_Commitment_Offenses.csv")
 tmp_df <- read_csv("Inmate_Commitment_Offenses.csv")
 tmp_df_clean <- tmp_df[, colSums(!is.na(tmp_df) & tmp_df != "") > 0]
 # Additional Step: Delete rows with non numeric values
-numeric_only <- tmp_df_clean %>%
-  filter(apply(.[-1], 1, function(row) all(str_detect(row, "^\\d+(\\.\\d+)?$"))))
+tmp_df_clean <- tmp_df_clean[-c(24,25,26,27),]
 colnames(tmp_df_clean) <- c("Inmate_Commitment_Offenses",
                             "Admissions_2020_Male", "Admissions_2020_Female", "Admissions_2020_Total",
                             "Releases_2020_Male", "Releases_2020_Female", "Releases_2020_Total",
@@ -245,10 +244,3 @@ write_csv(tmp_df_clean, "Inmate_Commitment_Offenses.csv")
 
 # Remove Unnecessary File at End
 file.remove('data_no_empty_cols.csv') 
-
-# LEFT OFF: Delete rows with non numeric values for Inmate Commitment Offenses Only
-
-
-
-
-
