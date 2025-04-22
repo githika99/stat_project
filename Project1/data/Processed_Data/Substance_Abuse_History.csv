@@ -1,0 +1,6 @@
+Substance_Abuse_History,Admissions_2020_Male,Admissions_2020_Female,Admissions_2020_Total,Releases_2020_Male,Releases_2020_Female,Releases_2020_Total,End_of_Fiscal_Year_2020_Confined_Population_Male,End_of_Fiscal_Year_2020_Confined_Population_Female,End_of_Fiscal_Year_2020_Confined_Population_Total
+Score 0: No need,1228,89,1317,839,76,915,6175,221,6396
+Score 1: Need for education but not treatment,715,57,772,574,48,622,2934,155,3089
+Score 2: Moderate need for treatment,2890,335,3225,2287,276,2563,7795,539,8334
+Score 3: Intense need for treatment,7469,1757,9226,5847,1352,7199,19239,3091,22330
+Total,12302,2238,14540,9547,1752,11299,36144,4006,40150

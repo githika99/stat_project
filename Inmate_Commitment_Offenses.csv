@@ -1,0 +1,30 @@
+Inmate_Commitment_Offenses,Admissions_2020_Male,Admissions_2020_Female,Admissions_2020_Total,Releases_2020_Male,Releases_2020_Female,Releases_2020_Total,End_of_Fiscal_Year_2020_Confined_Population_Male,End_of_Fiscal_Year_2020_Confined_Population_Female,End_of_Fiscal_Year_2020_Confined_Population_Total,
+Arson,32,5,37,37,8,45,NA,125,13,138
+Assault,"1,641",172,"1,813","1,920",181,"2,101",NA,"4,983",400,"5,383"
+Auto Theft,628,117,745,729,125,854,NA,"1,670",243,"1,913"
+Burglary/Criminal Trespass,"1,022",126,"1,148","1,324",151,"1,475",NA,"2,294",189,"2,483"
+Child/Adult Abuse,79,35,114,85,40,125,NA,207,84,291
+Child Molestation,142,2,144,176,2,178,NA,"1,601",18,"1,619"
+Criminal Damage,80,5,85,83,7,90,NA,138,8,146
+Domestic Violence,134,14,148,136,12,148,NA,146,10,156
+Drug Offense,"4,281","1,039","5,320","4,652","1,156","5,808",NA,"6,825","1,314","8,139"
+DUI,"1,004",227,"1,231","1,168",264,"1,432",NA,"1,133",160,"1,293"
+Escape,25,6,31,51,5,56,NA,134,19,153
+Forgery,151,76,227,185,94,279,NA,217,110,327
+Fraud,96,40,136,93,44,137,NA,171,59,230
+Identity Theft,114,56,170,132,80,212,NA,255,131,386
+Kidnapping,182,6,188,227,9,236,NA,"1,231",41,"1,272"
+Manslaughter/Neg. Homicide,98,28,126,89,12,101,NA,658,109,767
+Murder,156,15,171,125,13,138,NA,"2,995",233,"3,228"
+Other,565,121,686,641,130,771,NA,"1,466",215,"1,681"
+Rape/Sexual Assault,57,2,59,64,0,64,NA,541,6,547
+Robbery,594,60,654,695,61,756,NA,"3,362",217,"3,579"
+Sex Offense,517,15,532,501,23,524,NA,"2,959",61,"3,020"
+Theft,535,183,718,604,193,797,NA,659,228,887
+Trafficking in Stolen Property,217,33,250,286,45,331,NA,498,63,561
+Arizona Department of Corrections,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Admissions, Releases, Confined Population Fact Sheet FY2020",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,                       Admissions                      ,NA,NA,                        Releases                        ,NA, End of Fiscal Year Confined Population,NA,NA,NA
+NA,      Male      ,    Female   ,      Total     ,      Male     ,    Female   ,      Total     ,NA,      Male     ,    Female   ,      Total     
+Weapons Offense,623,37,660,770,40,810,NA,"1,788",74,"1,862"
+Total,"12,973","2,420","15,393","14,773","2,695","17,468",NA,"36,058","4,005","40,063"

@@ -1,0 +1,12 @@
+Medical_Score,Admissions_2020_Male,Admissions_2020_Female,Admissions_2020_Total,Releases_2020_Male,Releases_2020_Female,Releases_2020_Total,End_of_Fiscal_Year_2020_Confined_Population_Male,End_of_Fiscal_Year_2020_Confined_Population_Female,End_of_Fiscal_Year_2020_Confined_Population_Total
+"Score 1: Maximum sustained physical capacity
+consistent with age; no special requirements",5660,1646,7306,4297,1269,5566,15137,2698,17835
+"Score 2: Sustained physical capacity consistent with age; stable physical illness or chronic
+condition, no special requirements.",5813,391,6204,4732,352,5084,17473,975,18448
+"Score 3: Restricted physical capacity; requires
+special housing or reasonable accommodations.",575,198,773,573,143,716,2914,321,3235
+"Score 4: Limited physical capacity and stamina; severe physical illness or chronic condition;
+requires housing in a corridor institution.",137,2,139,138,5,143,587,6,593
+"Score 5: Severely limited physical capacity and
+stamina; requires assistance with Activities of Daily Living (ADLS); requires housing in Inpatient Component or Assisted Living area",3,1,4,11,1,12,22,2,24
+Total,12188,2238,14426,9751,1770,11521,36133,4002,40135
