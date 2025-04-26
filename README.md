@@ -1,7 +1,5 @@
-# test
+# Project Outline
 Githika Annapureddy
-
-## Project Outline
 
 -   **Research Question & Motivation:**  
 

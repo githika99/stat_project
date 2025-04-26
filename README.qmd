@@ -1,11 +1,9 @@
 ---
-title: "test"
+title: "Project Outline"
 author: "Githika Annapureddy"
 format: md
 editor: visual
 ---
-
-## Project Outline
 
 -   **Research Question & Motivation:**\
 

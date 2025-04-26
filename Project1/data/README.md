@@ -1,19 +1,36 @@
----
-title: "Data Cleaning"
-author: "Githika Annapureddy"
-format: md
-editor: visual
----
+# Data Cleaning
+Githika Annapureddy
 
-Both the pdfs "Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.pdf" and "Arizona_Department_of_Corrections_Cost_Report_2020.pdf" which can be found in ./data/Raw_Data are reports released by the [Arizona Department of Corrections, ](https://azlibrary.gov/sla/agency_histories/department-corrections)[Rehabilitation](https://corrections.az.gov/data-reports)[ & Reentry](https://azlibrary.gov/sla/agency_histories/department-corrections).
+Both the pdfs
+“Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.pdf” and
+“Arizona_Department_of_Corrections_Cost_Report_2020.pdf” which can be
+found in ./data/Raw_Data are reports released by the [Arizona Department
+of
+Corrections,](https://azlibrary.gov/sla/agency_histories/department-corrections)[Rehabilitation](https://corrections.az.gov/data-reports)[&
+Reentry](https://azlibrary.gov/sla/agency_histories/department-corrections).
 
-In order to extract tables from these pdf reports into csv files, I first used Adobe Acrobat to turn the pdf files into xlsx files. The xlsx versions of these files can also be found in ./data/Raw_Data. Then, I used Excel to inspect these files and identify which tables I wanted to extract. Each table was extracted into its own csv file.
+In order to extract tables from these pdf reports into csv files, I
+first used Adobe Acrobat to turn the pdf files into xlsx files. The xlsx
+versions of these files can also be found in ./data/Raw_Data. Then, I
+used Excel to inspect these files and identify which tables I wanted to
+extract. Each table was extracted into its own csv file.
 
 ## Inmate Fact Sheet
 
-The Fact Sheet has information on the demographics of prisoners who in 2020, were admitted, released, and confined in the prison by the end of the fiscal year. The information is available by gender. I saved all tables from the Fact Sheet except for County of Conviction. For categories in which the counts and distribution were both provided, such as "Admit Type \#" and "Admit Type %", I only saved the counts.
+The Fact Sheet has information on the demographics of prisoners who in
+2020, were admitted, released, and confined in the prison by the end of
+the fiscal year. The information is available by gender. I saved all
+tables from the Fact Sheet except for County of Conviction. For
+categories in which the counts and distribution were both provided, such
+as “Admit Type \#” and “Admit Type %”, I only saved the counts.
 
-Since "Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.xlsx" consisted of only tables, I was able to extract the whole file as a csv file using Excel. This can be found as "Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.csv" in ./data/Raw_Data. The R script "Inmate_Fact_Sheet_Data_Cleaning.R" extracts many csv files, one for each table I was interested in, from "Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.csv".
+Since “Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.xlsx”
+consisted of only tables, I was able to extract the whole file as a csv
+file using Excel. This can be found as
+“Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.csv” in
+./data/Raw_Data. The R script “Inmate_Fact_Sheet_Data_Cleaning.R”
+extracts many csv files, one for each table I was interested in, from
+“Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.csv”.
 
 These extracted csv files are saved in ./data/Processed_Data as follows:
 
@@ -51,9 +68,22 @@ These extracted csv files are saved in ./data/Processed_Data as follows:
 
 ## Cost Report
 
-The Cost Report could not easily be saved as a csv file because it had images and text that was not in a table. Thus, saving it as a csv would cause information to be lost. Thus, I decided to extract the individual tables that were relevant to me from the xlsx file. The R script "Cost_Report_Data_Cleaning.R" extracts these tables into csv files. The focus of my project is the difference in expenditures between private and public prison units. Thus, although the report has lots of interesting information, I focused on tables directly related to this.
+The Cost Report could not easily be saved as a csv file because it had
+images and text that was not in a table. Thus, saving it as a csv would
+cause information to be lost. Thus, I decided to extract the individual
+tables that were relevant to me from the xlsx file. The R script
+“Cost_Report_Data_Cleaning.R” extracts these tables into csv files. The
+focus of my project is the difference in expenditures between private
+and public prison units. Thus, although the report has lots of
+interesting information, I focused on tables directly related to this.
 
-I extracted the Expenditure Summary table on page 8 of the pdf. In this table, I only extracted the information from the Private Prisons. The information on private prisons was organized by unit. I extracted the entire table from pages 10 and 11 of the pdf, which contains information on State Prison Expenditure by Prison Unit. Since both the extracted data for Private and Public prisons was then organized by unit, I could compare the data.
+I extracted the Expenditure Summary table on page 8 of the pdf. In this
+table, I only extracted the information from the Private Prisons. The
+information on private prisons was organized by unit. I extracted the
+entire table from pages 10 and 11 of the pdf, which contains information
+on State Prison Expenditure by Prison Unit. Since both the extracted
+data for Private and Public prisons was then organized by unit, I could
+compare the data.
 
 These extracted csv files are saved in ./data/Processed_Data as follows:
 

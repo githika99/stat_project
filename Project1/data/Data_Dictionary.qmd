@@ -1,0 +1,29 @@
+---
+title: "Data_Dictionary"
+format: md
+editor: visual
+---
+
+## Inmate Fact Sheet
+
+The Fact Sheet has information on the demographics of prisoners who in 2020, were admitted, released, and confined in the prison by the end of the fiscal year. The information is available by gender. I saved all tables from the Fact Sheet except for County of Conviction. For categories in which the counts and distribution were both provided, such as "Admit Type \#" and "Admit Type %", I only saved the counts.
+
+## Cost Report
+
+The focus of my project is the difference in expenditures between private and public prison units. Thus, although the report has lots of interesting information, I focused on tables directly related to this. I extracted the Expenditure Summary table on page 8 of the pdf. In this table, I only extracted the information from the Private Prisons. The information on private prisons was organized by unit. I extracted the entire table from pages 10 and 11 of the pdf, which contains information on State Prison Expenditure by Prison Unit. Since both the extracted data for Private and Public prisons was then organized by unit, I could compare the data.
+
+This table explains the meaning of each column of Private_Prison_Expenditure.csv and State_Prison_Expenditure.csv.
+
+|  |  |
+|----|----|
+| CUSTODY | Type or level of security supervision for inmates (Minimum, Medium, Close, or Maximum). |
+| ADP | (Average Daily Population) Average number of inmates housed each day over a year. |
+| Unit Direct | Costs directly tied to running a single prison unit. |
+| Complex Direct | Costs directly tied to managing a group of prison units. |
+| Total Direct | All direct costs combined from units and complexes. |
+| Total Indirect | Overhead costs not tied to specific units (like administration, HR). |
+| Total Expense | Direct + Indirect costs |
+| Annual Per Capita Cost - Direct | Direct costs divided by the number of inmates per year. |
+| Annual Per Capita Cost - Indirect | Indirect costs divided by the number of inmates per year. |
+| Annual Per Capita Cost - Total | Total costs divided by the number of inmates per year. |
+| Daily Per Capita Cost | Total costs divided by inmates per day. |
