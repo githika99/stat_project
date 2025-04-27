@@ -1,8 +1,10 @@
-# Distributions of Each Variable
+---
+title: "Distributions of Each Variable"
+format: md
+editor: visual
+---
 
-
-The distributions shown here are for state prisons and private prisons
-combined. The file Distributions.R creates these charts.
+The distributions shown here are for state prisons and private prisons combined. The file Distributions.R creates these charts.
 
 Distribution for Custody
 
