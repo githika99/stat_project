@@ -8,6 +8,53 @@ editor: visual
 
 The Fact Sheet has information on the demographics of prisoners who in 2020, were admitted, released, and confined in the prison by the end of the fiscal year. The information is available by gender. I saved all tables from the Fact Sheet except for County of Conviction. For categories in which the counts and distribution were both provided, such as "Admit Type \#" and "Admit Type %", I only saved the counts.
 
+The following tables explain the terms found in Admit_Type.csv.
+
+|  |  |
+|----|----|
+| **New Court Commitments** | People newly sentenced to prison by a court. |
+| **County Probationers Revoked** | People sent to prison because their county probation was canceled. |
+| **ADC Paroles Revoked** | People sent back to prison because they violated Arizona parole rules. |
+| **Other** | Admissions that don’t fit into the main listed categories. |
+
+The following tables explain the terms found in Criminal_History.csv.
+
+|  |  |
+|----|----|
+| Violent History | **Prisoners with a violent criminal history.** |
+| Current Violent | Prisoners who are currently serving a sentence for a violent crime. |
+| Non Violent \# | Prisoners with a non violent criminal history and prisoners who are currently serving a sentence for a non violent crime. |
+
+The following tables explain the terms found in Felony_Class.csv.
+
+| Felony Class 1 |  Most serious crimes (like murder). |
+|----|----|
+| Felony Class 2 | Very serious crimes (like manslaughter or armed robbery). |
+| Felony Class 3 | Serious crimes (like aggravated assault). |
+| Felony Class 4 |  Mid-level crimes (like theft or drug possession with intent). |
+| Felony Class 5 | Less serious felonies (like credit card fraud). |
+| Felony Class 6 | Least serious felonies (sometimes treated like misdemeanors). |
+
+The following tables explain the terms found in Mental_Health.csv.
+
+|  |  |
+|----|----|
+| **Score 1: No Need** | No mental health treatment needed. |
+| **Score 2: Low Need** | Minor mental health support needed. |
+| **Score 3: Moderate to High Need** | Moderate to serious mental health support needed. |
+| **Score 4: High Need** | Significant mental health treatment needed. |
+| **Score 5: Acute Need** | Immediate, intensive mental health care required. |
+
+The following tables explain the terms found in Substance_Abuse_History.csv.
+
+| **Score 0: No Need** | No substance abuse help needed. |
+|----|----|
+| **Score 1: Education Need** | Needs education about substance abuse, but no treatment. |
+| **Score 2: Moderate Treatment Need** | Needs moderate level substance abuse treatment. |
+| **Score 3: Intense Treatment Need** | Needs intensive substance abuse treatment. |
+
+The terms in the remaining tables are self explanatory.
+
 ## Cost Report
 
 The focus of my project is the difference in expenditures between private and public prison units. Thus, although the report has lots of interesting information, I focused on tables directly related to this. I extracted the Expenditure Summary table on page 8 of the pdf. In this table, I only extracted the information from the Private Prisons. The information on private prisons was organized by unit. I extracted the entire table from pages 10 and 11 of the pdf, which contains information on State Prison Expenditure by Prison Unit. Since both the extracted data for Private and Public prisons was then organized by unit, I could compare the data.
