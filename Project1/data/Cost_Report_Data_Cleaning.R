@@ -10,6 +10,81 @@ Data_gfg_clean <- Data_gfg[, colSums(!is.na(Data_gfg) & Data_gfg != "") > 0] # r
 
 Data_gfg_clean
 
+# read from fields A97:CU109 -> private prisons
+shorter_dataset <- read_excel(
+  "Arizona_Department_of_Corrections_Cost_Report_2020.xlsx",
+  range = "A97:CU109",
+  col_names = TRUE
+)
+
+shorter_dataset <- shorter_dataset[, colSums(!is.na(shorter_dataset) & shorter_dataset != "") > 0] # remove empty columns
+
+colnames(shorter_dataset) <- c("Prison Unit", "Custody", "ADP", "UNIT DIRECT", "COMPLEX DIRECT", "TOTAL DIRECT","TOTAL INDIRECT", "TOTAL EXPENSE", "Annual Per Capita Cost - Direct", "Annual Per Capita Cost - Indirect", "Annual Per Capita Cost - Total", "Daily Per Capita Cost")
+
+shorter_dataset <- shorter_dataset[-11, ] #remove row 12
+
+write_csv(shorter_dataset, "Private_Prison_Revenue3.csv")
+
+
+# read from A129:CT202
+shorter_dataset <- read_excel(
+  "Arizona_Department_of_Corrections_Cost_Report_2020.xlsx",
+  range = "A129:CT202",
+  col_names = TRUE
+)
+
+shorter_dataset <- shorter_dataset[, colSums(!is.na(shorter_dataset) & shorter_dataset != "") > 0] # remove empty columns
+
+colnames(shorter_dataset) <- c("Prison Unit", "Custody", "ADP", "UNIT DIRECT", "COMPLEX DIRECT", "TOTAL DIRECT","TOTAL INDIRECT", "TOTAL EXPENSE", "Annual Per Capita Cost - Direct", "Annual Per Capita Cost - Indirect", "Annual Per Capita Cost - Total", "Daily Per Capita Cost")
+
+#renaming column prison unit for ones that have the complex name already
+shorter_dataset[c(16, 34), "Prison Unit"] <- c("Central", "Lumley")
+
+# adding complex name to prison unit column
+shorter_dataset$`Prison Unit`[c(1,2,3,4,5)] <- paste0("ASPC-DOUGLAS - ", shorter_dataset$`Prison Unit`[c(1,2,3,4,5)])
+shorter_dataset$`Prison Unit`[c(7,8,9,10,11,12,13,14,15)] <- paste0("ASPC-EYMAN - ", shorter_dataset$`Prison Unit`[c(7,8,9,10,11,12,13,14,15)])
+shorter_dataset$`Prison Unit`[c(16,17,18,19,20,21,22)] <- paste0("ASPC-FLORENCE - ", shorter_dataset$`Prison Unit`[c(16,17,18,19,20,21,22)])
+shorter_dataset$`Prison Unit`[c(24,25,26,27,28,29,30,31,32,33)] <- paste0("ASPC-LEWIS - ", shorter_dataset$`Prison Unit`[c(24,25,26,27,28,29,30,31,32,33)])
+shorter_dataset$`Prison Unit`[c(34, 35, 36, 37, 38, 39, 40, 41, 42,43)] <- paste0("ASPC-PERRYVILLE - ", shorter_dataset$`Prison Unit`[c(34, 35, 36, 37, 38, 39, 40, 41, 42,43)])
+shorter_dataset$`Prison Unit`[c(47,48,49,50)] <- paste0("ASPC-SAFFORD - ", shorter_dataset$`Prison Unit`[c(47,48,49,50)])
+shorter_dataset$`Prison Unit`[c(52,53,54,55,56,57,58,59,60)] <- paste0("ASPC-TUCSON - ", shorter_dataset$`Prison Unit`[c(52,53,54,55,56,57,58,59,60)])
+shorter_dataset$`Prison Unit`[c(62,63,64,65)] <- paste0("ASPC-WINSLOW - ", shorter_dataset$`Prison Unit`[c(62,63,64,65)])
+shorter_dataset$`Prison Unit`[c(67,68,69,70,71,72)] <- paste0("ASPC-YUMA - ", shorter_dataset$`Prison Unit`[c(67,68,69,70,71,72)])
+
+#replace text NA to logical NA in Custody col
+shorter_dataset$Custody[shorter_dataset$Custody == "NA"] <- NA
+
+#rename to include custody name in prison unit column
+shorter_dataset$`Prison Unit` <- ifelse(
+  is.na(shorter_dataset$Custody),
+  shorter_dataset$`Prison Unit`,
+  paste0(shorter_dataset$`Prison Unit`, " - ", shorter_dataset$Custody)
+)
+
+# remove custody col
+shorter_dataset$Custody <- NULL
+
+# lines with same unit name (different custody levels)
+# Lumely
+# 39, 40 - ASPC-PERRYVILLE - Santa Cruz
+# 24, 25 - ASPC-LEWIS - Bachman
+# 13, 14 - ASPC-EYMAN - SMU I
+# 10, 11 - ASPC-EYMAN - Meadows
+# 7, 8 - ASPC-EYMAN - Browning 
+# Rast
+# Central
+
+shorter_dataset <- shorter_dataset[-c(6, 23, 28, 44, 45, 46, 51, 61, 66), ] #remove rows that just had Units, no information
+
+# remove row that had empty information (ASPC - LEWIS: Morey) (Line 28)
+
+write_csv(shorter_dataset, "State_Prison_Revenue.csv")
+
+# delete row in the middle 
+
+
+
+"""
 # range range to read, like "B3:D87". col_types types (numeric, text). col_names - specify a name for each column
 #datasets <- readxl_example("/Users/githika/GitHub/stat_project/Arizona_Department_of_Corrections_Cost_Report_2020.xlsx")
 shorter_dataset <- read_excel("Arizona_Department_of_Corrections_Cost_Report_2020.xlsx", range = "A81:BO96", 
@@ -81,4 +156,5 @@ write_csv(shorter_dataset, "Private_Prison_Complexes_Revenue.csv")
 # for state prisosn they have units listen on pages 10-11
 # for eda: do a distribution on each variable: 
 # do cluster analysis
+"""
 
