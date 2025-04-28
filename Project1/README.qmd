@@ -5,7 +5,7 @@ format: md
 editor: visual
 ---
 
-Both the pdfs "Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.pdf" and "Arizona_Department_of_Corrections_Cost_Report_2020.pdf" which can be found in ./data/Raw_Data are reports released by the [Arizona Department of Corrections, ](https://azlibrary.gov/sla/agency_histories/department-corrections)[Rehabilitation](https://corrections.az.gov/data-reports)[ & Reentry](https://azlibrary.gov/sla/agency_histories/department-corrections).
+Both the pdfs "Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.pdf" and "Arizona_Department_of_Corrections_Cost_Report_2020.pdf" which can be found in ./data/Raw_Data are reports released by the [Arizona Department of Corrections,](https://azlibrary.gov/sla/agency_histories/department-corrections)[Rehabilitation](https://corrections.az.gov/data-reports)[& Reentry](https://azlibrary.gov/sla/agency_histories/department-corrections).
 
 In order to extract tables from these pdf reports into csv files, I first used Adobe Acrobat to turn the pdf files into xlsx files. The xlsx versions of these files can also be found in ./data/Raw_Data. Then, I used Excel to inspect these files and identify which tables I wanted to extract. Each table was extracted into its own csv file.
 
@@ -57,6 +57,6 @@ I extracted the Expenditure Summary table on page 8 of the pdf. In this table, I
 
 These extracted csv files are saved in ./data/Processed_Data as follows:
 
--   Private_Prison_Expenditure.csv
+-   [Private_Prison_Revenue.csv](https://github.com/githika99/stat_project/blob/main/Project1/data/Processed_Data/Private_Prison_Revenue.csv "Private_Prison_Revenue.csv")
 
--   State_Prison_Expenditure.csv
+-   [State_Prison_Revenue.csv](https://github.com/githika99/stat_project/blob/main/Project1/data/Processed_Data/State_Prison_Revenue.csv "State_Prison_Revenue.csv")
