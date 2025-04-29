@@ -1,8 +1,0 @@
-
-
-# PCA 
-
-
-
-# Hierarchical Clustering
-
