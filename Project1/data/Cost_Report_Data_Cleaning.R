@@ -3,6 +3,7 @@ library(tidyverse)
 library(naniar)
 library(superheat)
 library(patchwork)
+library(dplyr)
 
 Data_gfg <- read_excel("Arizona_Department_of_Corrections_Cost_Report_2020.xlsx", col_types = "text")
 
@@ -12,7 +13,7 @@ Data_gfg_clean
 
 # read from fields A97:CU109 -> private prisons
 shorter_dataset <- read_excel(
-  "Arizona_Department_of_Corrections_Cost_Report_2020.xlsx",
+  "./Project1/data/Raw_Data/Arizona_Department_of_Corrections_Cost_Report_2020.xlsx",
   range = "A97:CU109",
   col_names = TRUE
 )
@@ -21,14 +22,30 @@ shorter_dataset <- shorter_dataset[, colSums(!is.na(shorter_dataset) & shorter_d
 
 colnames(shorter_dataset) <- c("Prison Unit", "Custody", "ADP", "UNIT DIRECT", "COMPLEX DIRECT", "TOTAL DIRECT","TOTAL INDIRECT", "TOTAL EXPENSE", "Annual Per Capita Cost - Direct", "Annual Per Capita Cost - Indirect", "Annual Per Capita Cost - Total", "Daily Per Capita Cost")
 
+shorter_dataset[c(6, 10), "Prison Unit"] <- c("Total Min Custody", "Total Med Custody")
+
 shorter_dataset <- shorter_dataset[-11, ] #remove row 12
 
-write_csv(shorter_dataset, "Private_Prison_Revenue3.csv")
+#rename to include custody name in prison unit column
+shorter_dataset$`Prison Unit` <- ifelse(
+  is.na(shorter_dataset$Custody),
+  shorter_dataset$`Prison Unit`,
+  paste0(shorter_dataset$`Prison Unit`, " - ", shorter_dataset$Custody)
+)
+
+# remove custody col
+shorter_dataset$Custody <- NULL
+
+# Convert all columns except 'Prison Unit' to numeric (if needed)
+shorter_dataset <- shorter_dataset %>%
+  mutate(across(-`Prison Unit`, ~ as.numeric(.)))
+
+write_csv(shorter_dataset, "Private_Prison_Revenue.csv")
 
 
 # read from A129:CT202
 shorter_dataset <- read_excel(
-  "Arizona_Department_of_Corrections_Cost_Report_2020.xlsx",
+  "./Project1/data/Raw_Data/Arizona_Department_of_Corrections_Cost_Report_2020.xlsx",
   range = "A129:CT202",
   col_names = TRUE
 )
@@ -77,6 +94,10 @@ shorter_dataset$Custody <- NULL
 shorter_dataset <- shorter_dataset[-c(6, 23, 28, 44, 45, 46, 51, 61, 66), ] #remove rows that just had Units, no information
 
 # remove row that had empty information (ASPC - LEWIS: Morey) (Line 28)
+
+# Convert all columns except 'Prison Unit' to numeric (if needed)
+shorter_dataset <- shorter_dataset %>%
+  mutate(across(-`Prison Unit`, ~ as.numeric(.)))
 
 write_csv(shorter_dataset, "State_Prison_Revenue.csv")
 
