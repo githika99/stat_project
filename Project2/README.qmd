@@ -8,10 +8,6 @@ The file Distributions.R creates these charts.
 
 **State Prisons:**
 
-```         
-![Private_Prisons_Daily_Per_Capita_Cost_Distribution](/Project2/Private_Prison_Distributions/Private_Prisons_Daily_Per_Capita_Cost_Distribution.png)
-```
-
 ![](images/Unit_Direct_Distribution.png)
 
 ![](images/Total_Indirect_Distribution.png)
