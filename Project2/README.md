@@ -1,27 +1,48 @@
 # Distributions of Each Variable
 
 
-The distributions shown here are for state prisons and private prisons
-combined. The file Distributions.R creates these charts.
+The file Distributions.R creates these charts.
 
-Distribution for Custody
+**State Prisons:**
 
-Distribution for ADP
+![](images/Unit_Direct_Distribution.png)
 
-Distribution for Unit Direct
+![](images/Total_Indirect_Distribution.png)
 
-Distribution for Complex Direct
+![](images/Total_Expense_Distribution.png)
 
-Distribution for Total Direct
+![](images/Total_Direct_Distribution.png)
 
-Distribution for Total Indirect
+![](images/Daily_Per_Capita_Cost_Distribution.png)
 
-Distribution for Total Expense
+![](images/Complex_Direct_Distribution.png)
 
-Distribution for Annual Per Capita Cost - Direct
+![](images/Annual_Per_Capita_Cost_Total_Distribution.png)
 
-Distribution for Annual Per Capita Cost - Indirect
+![](images/Annual_Per_Capita_Cost_Indirect_Distribution.png)
 
-Distribution for Annual Per Capita Cost - Total
+![](images/Annual_Per_Capita_Cost_Direct_Distribution.png)
 
-Distribution for Daily Per Capita Cost
+![](images/ADP_Distribution.png)
+
+**Private Prisons:**
+
+![](images/Private_Prisons_Daily_Per_Capita_Cost_Distribution.png)
+
+![](images/Private_Prison_Unit_Direct_Distribution.png)
+
+![](images/Private_Prison_Total_Indirect_Distribution.png)
+
+![](images/Private_Prison_Total_Expense_Distribution.png)
+
+![](images/Private_Prison_Total_Direct_Distribution.png)
+
+![](images/Private_Prison_Complex_Direct_Distribution.png)
+
+![](images/Private_Prison_Annual_Per_Capita_Cost_Total_Distribution.png)
+
+![](images/Private_Prison_Annual_Per_Capita_Cost_Indirect_Distribution.png)
+
+![](images/Private_Prison_Annual_Per_Capita_Cost_Direct_Distribution.png)
+
+![](images/Private_Prison_ADP_Distribution.png)
