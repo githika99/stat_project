@@ -1,11 +1,21 @@
 # Distributions for each variable across private and public
 library(ggplot2)
+library(tidyverse)
 library(scales)
 
 # State Prisons
-shorter_dataset <- read_csv("./Project1/data/Processed_Data/State_Prison_Revenue.csv")
+shorter_dataset <- read_csv("../Project1/data/Processed_Data/State_Prison_Revenue.csv")
 shorter_dataset <- shorter_dataset[!grepl("Total", shorter_dataset$`Prison Unit`, ignore.case = TRUE), ] #ignore all rows that include the word Total
 
+
+p <- ggplot(shorter_dataset, aes(x = `ADP`)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "skyblue", color = "black", alpha = 0.6) +
+  geom_density(color = "darkblue", size = 1.2) +
+  scale_x_continuous(labels = comma) + 
+  labs(title = "Distribution of ADP", x = "ADP", y = "Density") +
+  theme_minimal()
+
+p
 
 p <- ggplot(shorter_dataset, aes(x = `ADP`)) +
   geom_histogram(bins = 30, fill = "skyblue", color = "black") +
@@ -79,8 +89,23 @@ p <- ggplot(shorter_dataset, aes(x = `Daily Per Capita Cost`)) +
 print(p)
 
 # Private Prisons
-shorter_dataset <- read_csv("./Project1/data/Processed_Data/Private_Prison_Revenue.csv")
-shorter_dataset <- shorter_dataset[!grepl("Total", shorter_dataset$`Prison Unit`, ignore.case = TRUE), ] #ignore all rows that include the word Total
+private_dataset <- read_csv("../Project1/data/Processed_Data/Private_Prison_Revenue.csv")
+private_dataset <- shorter_dataset[!grepl("Total", shorter_dataset$`Prison Unit`, ignore.case = TRUE), ] #ignore all rows that include the word Total
+
+shorter_dataset$group <- "All"
+private_dataset$group <- "Private"
+
+combined_data <- rbind(shorter_dataset, private_dataset)
+
+
+p <- ggplot(combined_data, aes(x = `ADP`, fill = group)) +
+  geom_histogram(bins = 30, color = "black", position = "identity", alpha = 0.5) +
+  scale_x_continuous(labels = comma) + 
+  labs(title = "Distribution of ADP (All vs Private)", x = "ADP", y = "Count") +
+  scale_fill_manual(values = c("black", "orange")) +
+  theme_minimal()
+
+p
 
 p <- ggplot(shorter_dataset, aes(x = `ADP`)) +
   geom_histogram(bins = 30, fill = "skyblue", color = "black") +

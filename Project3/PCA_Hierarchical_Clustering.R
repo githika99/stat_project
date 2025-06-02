@@ -69,5 +69,19 @@ ggplot(combined_scores, aes(x = PC1, y = PC2, color = Type)) +
   theme_minimal()
 
 
-# Hierarchical Clustering
+# Print out what is in each component
+# Print loadings for PC1 and PC2 - State
+cat("Top contributing features to PC1 (State):\n")
+print(sort(abs(pca_state$rotation[,1]), decreasing = TRUE))
+
+cat("\nTop contributing features to PC2 (State):\n")
+print(sort(abs(pca_state$rotation[,2]), decreasing = TRUE))
+
+# Print loadings for PC1 and PC2 - Private
+cat("\nTop contributing features to PC1 (Private):\n")
+print(sort(abs(pca_priv$rotation[,1]), decreasing = TRUE))
+
+cat("\nTop contributing features to PC2 (Private):\n")
+print(sort(abs(pca_priv$rotation[,2]), decreasing = TRUE))
+
 
