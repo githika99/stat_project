@@ -1,0 +1,21 @@
+---
+title: "Project_4_Report"
+format: pdf
+editor: visual
+---
+
+### **1. Scientific or Statistical Question**
+
+-   Question: How do private prisons and state prisons spend money differently? Does this uncover any underlying patterns amongst private or state prisons?
+
+### **2. Data**
+
+-   Data generating model: Features in data: Prison Unit ADP UNIT_DIRECT COMPLEX_DIRECT TOTAL_DIRECT TOTAL_INDIRECT TOTAL_EXPENSE Annual Per Capita Cost - Direct Annual Per Capita Cost - Indirect Annual Per Capita Cost - Total Daily Per Capita Cost
+
+-   Some of these features can be calculated from others. So if we simulate ADP, UNIT_DIRECT, COMPLEX_DIRECT, and TOTAL_DIRECT we can calculate the rest of the values.
+
+-   These are the calculated features: TOTAL_DIRECT = UNIT_DIRECT + COMPLEX_DIRECT, TOTAL_EXPENSE = TOTAL_DIRECT + TOTAL_INDIRECT, `Annual Per Capita Cost - Direct` = `TOTAL_DIRECT / ADP, Annual Per Capita Cost - Indirect` = `TOTAL_INDIRECT / ADP, Annual Per Capita Cost - Total` = `TOTAL_EXPENSE / ADP, Daily Per Capita Cost` = `Annual Per Capita Cost - Total / 365`
+
+-   Describe the **data-generating model** used in the simulation. Write it in mathematical notation. 
+
+-   Include assumptions, distributions, and parameters.
