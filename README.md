@@ -10,14 +10,14 @@ Githika Annapureddy
     incarceration practices and whether funding aligns with
     rehabilitation.
 
-    **Hypotheses:**  
+  **Hypotheses:**  
 
     I hypothesize that private prisons spend less per inmate than
     state-run facilities and that higher inmate populations correlate
     with lower per-capita spending. I also expect that funding for
     community-based alternatives like parole is comparatively low.
 
-    **Data:**
+  **Data:**
     
     I have two datasets from Arizona Department of Corrections.
     They are as follows: [Arizona Department of Corrections- Cost
