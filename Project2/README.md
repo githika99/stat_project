@@ -1,7 +1,17 @@
 # Distributions of Each Variable
 
 
-The file Distributions.R creates these charts.
+Private prisons have less Direct and Indirect Annual Per Capita Cost
+than State prisons. Direct Costs are tied to the operation of a specific
+prison facility or unit. They include salaries for staff; food,
+clothing, and hygiene products for inmates; utilities (electricity,
+water, etc.) used in the facility; and facility maintenance. Indirect
+costs are shared or overhead costs that support the prison system but
+aren’t directly linked to one facility. They include central
+administration salaries (e.g., the state corrections department
+headquarters); IT systems that serve multiple facilities; legal services
+and oversight; state-level contracting or procurement services; and
+training programs for correctional officers across facilities.
 
 **Multivariate Plots:**
 
