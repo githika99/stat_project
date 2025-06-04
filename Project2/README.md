@@ -21,44 +21,48 @@ training programs for correctional officers across facilities.
 
 **State Prisons:**
 
-![](images/Unit_Direct_Distribution.png)
+![](images/State_Prison_Distributions/ADP_Distribution.png)
 
-![](images/Total_Indirect_Distribution.png)
+![](images/State_Prison_Distributions/Unit_Direct_Distribution.png)
 
-![](images/Total_Expense_Distribution.png)
+![](images/State_Prison_Distributions/Total_Indirect_Distribution.png)
 
-![](images/Total_Direct_Distribution.png)
+![](images/State_Prison_Distributions/Total_Indirect_Distribution.png)
 
-![](images/Daily_Per_Capita_Cost_Distribution.png)
+![](images/State_Prison_Distributions/Total_Expense_Distribution.png)
 
-![](images/Complex_Direct_Distribution.png)
+![](images/State_Prison_Distributions/Total_Direct_Distribution.png)
 
-![](images/Annual_Per_Capita_Cost_Total_Distribution.png)
+![](images/State_Prison_Distributions/Daily_Per_Capita_Cost_Distribution.png)
 
-![](images/Annual_Per_Capita_Cost_Indirect_Distribution.png)
+![](images/State_Prison_Distributions/Daily_Per_Capita_Cost_Distribution.png)
 
-![](images/Annual_Per_Capita_Cost_Direct_Distribution.png)
+![](images/State_Prison_Distributions/Complex_Direct_Distribution.png)
 
-![](images/ADP_Distribution.png)
+![](images/State_Prison_Distributions/Annual_Per_Capita_Cost_Total_Distribution.png)
+
+![](images/State_Prison_Distributions/Annual_Per_Capita_Cost_Indirect_Distribution.png)
+
+![](images/State_Prison_Distributions/Annual_Per_Capita_Cost_Direct_Distribution.png)
 
 **Private Prisons:**
 
-![](images/Private_Prisons_Daily_Per_Capita_Cost_Distribution.png)
+![](images/Private_Prison_Distributions/Private_Prison_ADP_Distribution.png)
 
-![](images/Private_Prison_Unit_Direct_Distribution.png)
+![](images/Private_Prison_Distributions/Private_Prisons_Daily_Per_Capita_Cost_Distribution.png)
 
-![](images/Private_Prison_Total_Indirect_Distribution.png)
+![](images/Private_Prison_Distributions/Private_Prison_Unit_Direct_Distribution.png)
 
-![](images/Private_Prison_Total_Expense_Distribution.png)
+![](images/Private_Prison_Distributions/Private_Prison_Total_Indirect_Distribution.png)
 
-![](images/Private_Prison_Total_Direct_Distribution.png)
+![](images/Private_Prison_Distributions/Private_Prison_Total_Expense_Distribution.png)
 
-![](images/Private_Prison_Complex_Direct_Distribution.png)
+![](images/Private_Prison_Distributions/Private_Prison_Total_Direct_Distribution.png)
 
-![](images/Private_Prison_Annual_Per_Capita_Cost_Total_Distribution.png)
+![](images/Private_Prison_Distributions/Private_Prison_Complex_Direct_Distribution.png)
 
-![](images/Private_Prison_Annual_Per_Capita_Cost_Indirect_Distribution.png)
+![](images/Private_Prison_Distributions/Private_Prison_Annual_Per_Capita_Cost_Total_Distribution.png)
 
-![](images/Private_Prison_Annual_Per_Capita_Cost_Direct_Distribution.png)
+![](images/Private_Prison_Distributions/Private_Prison_Annual_Per_Capita_Cost_Indirect_Distribution.png)
 
-![](images/Private_Prison_ADP_Distribution.png)
+![](images/Private_Prison_Distributions/Private_Prison_Annual_Per_Capita_Cost_Direct_Distribution.png)
