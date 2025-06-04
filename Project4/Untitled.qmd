@@ -16,6 +16,19 @@ editor: visual
 
 -   These are the calculated features: TOTAL_DIRECT = UNIT_DIRECT + COMPLEX_DIRECT, TOTAL_EXPENSE = TOTAL_DIRECT + TOTAL_INDIRECT, `Annual Per Capita Cost - Direct` = `TOTAL_DIRECT / ADP, Annual Per Capita Cost - Indirect` = `TOTAL_INDIRECT / ADP, Annual Per Capita Cost - Total` = `TOTAL_EXPENSE / ADP, Daily Per Capita Cost` = `Annual Per Capita Cost - Total / 365`
 
--   Describe the **data-generating model** used in the simulation. Write it in mathematical notation. 
+-   Data-generating model: Let i=1,2,…,ni = 1, 2, \dots, ni=1,2,…,n index each prison unit.
 
--   Include assumptions, distributions, and parameters.
+    -   ADPi​∼UniformDiscrete(200,1300). We assume ADP follows a discrete uniform distribution between 200 and 1300.
+
+    -   UNIT_DIRECTi​=ADPi​⋅Ui​,Ui​∼N(15,000,3,0002)
+        COMPLEX_DIRECTi=ADPi⋅Ci,Ci∼N(6,000,1,5002)\text{COMPLEX\_DIRECT}_i = \text{ADP}_i \cdot C_i, \quad C_i \sim \mathcal{N}(6{,}000, 1{,}500^2)COMPLEX_DIRECTi​=ADPi​⋅Ci​,Ci​∼N(6,000,1,5002) Direct costs are modeled as **proportional to population** with normally distributed per capita costs.
+
+    -   TOTAL_INDIRECTi​=ADPi​⋅Ii​,Ii​∼N(1,500,5002)
+
+    -   Derived Values: Formulas are found above.
+
+### **3. Estimates**
+
+-   What quantity or quantities are you estimating via simulation? i.e. what is your response variable(s)?
+
+-   Use clear mathematical notation to define what you are calculating. Some ideas: bias, variance, power, MSE, deviance, etc.).
