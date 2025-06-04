@@ -124,8 +124,8 @@ shorter_dataset <- read_excel(
   "Arizona_Department_of_Corrections_Cost_Report_2020.xlsx",
   range = "A97:BO109",
   col_names = c(
-    "CUSTODY", "ADP", "BLANK1", "UNIT_DIRECT", "COMPLEX_DIRECT", "BLANK2",
-    "TOTAL_DIRECT", "BLANK3", "BLANK4", "TOTAL_INDIRECT", "BLANK5", "BLANK6", "TOTAL_EXPENSE"
+    "CUSTODY", "ADP", "BLANK1", "UNIT DIRECT", "COMPLEX DIRECT", "BLANK2",
+    "TOTAL DIRECT", "BLANK3", "BLANK4", "TOTAL INDIRECT", "BLANK5", "BLANK6", "TOTAL EXPENSE"
   ),
   col_types = c(
     "text", "numeric", "numeric", "numeric", "numeric", "numeric",
