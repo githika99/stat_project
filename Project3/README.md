@@ -1,17 +1,5 @@
 # Model
 
-
--   Add a picture of every graph with state superimposed on private (for
-    matching graphs). Add a line on top that traces the histogram’s
-    shape.
-
--   i want to somehow see if ADP more directly correlates to higher
-    spending. OR if custody type (max, min, close, med) correlate to
-    spending. I want to test how these effects differ for state and
-    private prisons.
-
--   combine private and state data.
-
 In order to analyze the difference between private and public prisons, I
 will use Principle Component Analysis. After reducing dimensionality
 with PCA, I created a plot in which private and public prisons are
@@ -41,5 +29,19 @@ capita measures. Additionally, I controlled for custody by only
 selecting minimum and medium prisons, since there is no data for close
 custody or max custody private prisons.
 
-I used \_\_\_ regression because \_\_\_. The residuals of the model were
-\_\_\_ normal, as displayed in this plot.
+I used linear regression because it is suitable for modeling continuous response variables and allows clear interpretation of the effect of ADP. 
+
+- add: The residuals of the model were \_\_\_ normal, as displayed in this plot.
+
+
+
+-   Add a picture of every graph with state superimposed on private (for
+    matching graphs). Add a line on top that traces the histogram’s
+    shape.
+
+-   i want to somehow see if ADP more directly correlates to higher
+    spending. OR if custody type (max, min, close, med) correlate to
+    spending. I want to test how these effects differ for state and
+    private prisons.
+
+-   combine private and state data.
