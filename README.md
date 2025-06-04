@@ -1,7 +1,7 @@
 # Project Outline
 Githika Annapureddy
 
--   **Research Question & Motivation:**  
+   **Research Question & Motivation:**  
 
     I want to explore how prisons in the U.S. generate and spend money,
     and how financial decisions differ by custody level, ownership, and
@@ -17,7 +17,9 @@ Githika Annapureddy
     with lower per-capita spending. I also expect that funding for
     community-based alternatives like parole is comparatively low.
 
-    So far I have two datasets from Arizona Department of Corrections.
+    **Data:**
+    
+    I have two datasets from Arizona Department of Corrections.
     They are as follows: [Arizona Department of Corrections- Cost
     Report](https://corrections.az.gov/sites/default/files/documents/reports/adcrr-percapcostreport_fy2020-final.pdf) and
     [Arizona Department of Corrections - Inmate Fact
