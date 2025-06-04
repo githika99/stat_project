@@ -3,6 +3,12 @@
 
 The file Distributions.R creates these charts.
 
+**Multivariate Plots:**
+
+![](images/Annual_Per_Capita_Direct_vs_ADP.png)
+
+![](images/Annual_Per_Capita_Indirect_vs_ADP.png)
+
 **State Prisons:**
 
 ![](images/Unit_Direct_Distribution.png)
