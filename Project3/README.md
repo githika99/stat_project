@@ -1,0 +1,136 @@
+# Model
+
+
+In order to analyze the difference between private and public prisons, I
+used Principle Component Analysis. After reducing dimensionality with
+PCA, I created a plot in which private and public prisons are colored
+differently.
+
+**Analysis**
+
+**PCA**
+
+The PCA Graph shows that State prisons are more consistent in how they
+operate per inmate and Private prisons are more varied and some diverge
+significantly from the state cluster. The difference is not significant
+enough to determine that all private prisons are different from all
+state prisons.
+
+![](images/PCA_Plot.png)
+
+The scree plot for private prisons shows that PCA1 and PCA2 have
+non-zero variances. This implies PCA found two patterns in the data.
+
+The scree plot for state prisons shows that only PCA1 has a non-zero
+variance. This implies PCA found only one pattern in the data.
+
+<figure>
+<img src="images/Scree_Plot_Private.png" alt="" />
+<figcaption aria-hidden="true"><img
+src="images/Scree_Plot_State.png" /></figcaption>
+</figure>
+
+These are the features in the PCA components:
+
+PC1 (State) and PC1 (Private):
+
+Annual Per Capita Cost - Total
+
+Daily Per Capita Cost
+
+Annual Per Capita Cost - Direct
+
+Annual Per Capita Cost - Indirect
+
+PC2 (Private):
+
+Annual Per Capita Cost - Indirect
+
+Annual Per Capita Cost - Direct
+
+Daily Per Capita Cost
+
+Annual Per Capita Cost - Total
+
+This suggests that Annual Per Capita Cost - Indirect is relevant to
+Private Prisons but not State Prisons.
+
+**Regression**
+
+I conducted regression to quantify how prison type and ADP effects cost
+metrics. I controlled for number of prisoners by only looking at the per
+capita measures.
+
+**Combined Regression**
+
+I combined both Private and State datasets. I addeed a feature called
+‘Type’ that was set to either Private or State. Two different regression
+models aimed to identify whether a prison was private or state based on
+the Annual Per Capita Cost - Direct or Annual Per Capita Cost - Indirect
+.This code is seen in Combined_Regression.R.
+
+<figure>
+<img src="images/Direct_Cost_Regression.png" alt="" />
+<figcaption aria-hidden="true"><img
+src="images/Indirect_Cost_Regression.png" /></figcaption>
+</figure>
+
+The model likely overfit due to small amount of data. However, it picked
+up on general trend, higher per capita costs are incurred by state
+prisons. 
+
+**Individual Regression**
+
+I also conducted linear regression on state data and private data
+separately. The regression predicted how Annual Per Capita Cost - Direct
+and Annual Per Capita Cost - Total are predicted by ADP. This code is
+seen in Individual_Regression.R.
+
+![](images/individual_regression_plot1.png)
+
+For Private, there is no clear trend. For State, the per capita costs go
+down as ADP increases. This suggests economies of scale — larger prisons
+can spread out fixed costs more effectively 
+
+However, there were only 11 data points for Private data and 64 data
+points for State data, this was not enough to accurately do regression.
+
+![](images/individual_regression_plot2.png)
+
+**Residuals (top left)**
+
+-   Non-randomness suggests heteroscedasticity
+
+**Q-Q Plot (top right)**
+
+-   Diagonal means normal distribution
+
+**Scale-Location Plot (bottom left)**
+
+-   Non-flat suggests heteroscedasticity. This suggests that linear
+    regression is not appropriate in this case.
+
+**Residuals vs. Leverage (bottom right)**
+
+-   Inflection points suggest one point has high influence
+
+![](images/individual_regression_plot3.png)
+
+**Residuals (top left)**
+
+-   Non-randomness suggests a linear relationship may not accurately
+    capture relationship
+
+**Q-Q Plot (top right)**
+
+-   Diagonal means normal distribution
+
+**Scale-Location Plot (bottom left)**
+
+-   Flat suggests constant variance. The relatively flat line suggests
+    that linear regression is much more appropriate for state data,
+    likely because it has more data.
+
+**Residuals vs. Leverage (bottom right)**
+
+-   Inflection points suggest one point has high influence
