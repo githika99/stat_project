@@ -17,8 +17,6 @@ Githika Annapureddy
     with lower per-capita spending. I also expect that funding for
     community-based alternatives like parole is comparatively low.
 
--   Dataset
-
     So far I have two datasets from Arizona Department of Corrections.
     They are as follows: [Arizona Department of Corrections- Cost
     Report](https://corrections.az.gov/sites/default/files/documents/reports/adcrr-percapcostreport_fy2020-final.pdf) and
