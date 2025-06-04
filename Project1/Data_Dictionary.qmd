@@ -27,11 +27,11 @@ The following tables explain the terms found in Criminal_History.csv.
 
 The following tables explain the terms found in Felony_Class.csv.
 
-| Felony Class 1 |  Most serious crimes (like murder). |
+| Felony Class 1 | Most serious crimes (like murder). |
 |----|----|
 | Felony Class 2 | Very serious crimes (like manslaughter or armed robbery). |
 | Felony Class 3 | Serious crimes (like aggravated assault). |
-| Felony Class 4 |  Mid-level crimes (like theft or drug possession with intent). |
+| Felony Class 4 | Mid-level crimes (like theft or drug possession with intent). |
 | Felony Class 5 | Less serious felonies (like credit card fraud). |
 | Felony Class 6 | Least serious felonies (sometimes treated like misdemeanors). |
 
