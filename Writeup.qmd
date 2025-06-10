@@ -164,7 +164,7 @@ Private: Annual Per Capita Cost - Indirect \~ ADP
 
 I also combined both datasets and added a column that differentiates between private and state data. The logistic models attempted to classify a prison as Private or State by Annual Per Capita Cost - Direct and Annual Per Capita Cost - Indirect.
 
-These graphs show the fit of the logistic regression models.
+These graphs show the fit of the logistic regression models. The model likely overfit due to small amount of data. However, it picked up on general trend, higher per capita costs are incurred by state prisons. 
 
 ![](images/Indirect_Cost_Regression.png)
 
