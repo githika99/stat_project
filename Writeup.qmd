@@ -173,17 +173,56 @@ These graphs show the fit of the logistic regression models. The model likely ov
 Results were not significant in both cases.
 
 |                               |            |           |        |         |             |
-|-------------------------------|------------|-----------|--------|---------|-------------|
+|-------------------|-----------|-----------|-----------|-----------|-----------|
 | Coefficients:                 | Estimate   | Std.      | Error  | z value | Pr(\>\|z\|) |
 | (Intercept)                   | 11.1330960 | 4.1302820 | 2.695  | 0.00703 | \*\* 0.01   |
-| Annual_Per_Capita_Cost_Direct | -0.0005730 | 4.1302820 | -2.918 | 0.00352 | \*\* 0.01   |
+| Annual Per Capita Cost Direct | -0.0005730 | 4.46828   | -2.918 | 0.00352 | \*\* 0.01   |
 
 |  |  |  |  |  |  |
 |------------|------------|------------|------------|------------|------------|
 | Coefficients: | Estimate | Std. | Error | z value | Pr(\>\|z\|) |
 | (Intercept) | 4.886e+01 | 5.668e+04 | 0.001 | 0.999 | 1 |
-| Annual_Per_Capita_Cost_Indirect | -5.928e-02 | 5.601e+01 | -0.001 | 0.999 | 1 |
+| Annual Per Capita Cost Indirect | -5.928e-02 | 5.601e+01 | -0.001 | 0.999 | 1 |
 
-Project 4
+**Project 4 - Monte Carlo Simulation**![](images/Monte_Carlo_MSE_by_Model-01.png)
 
-## 
+![](images/Monte_Carlo_MSE_by_Correlation-01.png)
+
+I want to identify if there are significant differences between Linear Regression, Ridge Regression (alpha = 0), and Lasso Regression (alpha = 1) for data that is not correlated, mildly correlated, highly correlated, and almost perfectly correlated.
+
+15 x variables are generated and 1 y variable is generated. The x variables are randomly generated from a multivariate normal distribution with equal pairwise correlation values, 0.10 for no correlation, 0.50 for mild correlation, 0.95 for high correlation, or 0.99 for almost perfect correlation.
+
+y = 1 \* x2 + 2 \*x3 + 3 \* x4 + 4 \* x5 + noise
+
+I am estimating if y can be predicted from all 15x's by linear, ridge, and lasso regression. It is replicated 100 times for each correlation and each model. Each model's performance is measured by MSE.
+
+This first plot shows a statistically significant difference between Linear Regression as compared to Lasso Regression and between Linear Regression as compared to Ridge Regression in the Almost Perfect Correlation case. This difference is illustrated in the table below as well. This is the only statistically significant difference in the results. More plots can be created in Project4/project4_simulation_Annapureddy_Githika.qmd
+
+```         
+    Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
+
+High Corr 0.762               -         -        
+Mild Corr 0.037               0.464     -        
+No Corr   0.762               0.905     0.464    
+```
+
+```         
+    Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
+
+       Lasso   Linear 
+Linear 2.8e-11 -      
+Ridge  0.00047 0.00175
+```
+
+| Model  | label               | Mean_MSE |    SD_MSE |
+|:-------|:--------------------|---------:|----------:|
+| Lasso  | Almost Perfect corr | 1.091134 | 0.2694847 |
+| Lasso  | High Corr           | 1.104686 | 0.2580040 |
+| Lasso  | Mild Corr           | 1.176031 | 0.3088236 |
+| Lasso  | No Corr             | 1.129455 | 0.2755578 |
+| Linear | Almost Perfect corr | 1.359378 | 0.3654802 |
+| Linear | High Corr           | 1.288295 | 0.3775425 |
+| Linear | Mild Corr           | 1.296692 | 0.3445425 |
+| Linear | No Corr             | 1.246999 | 0.3609552 |
+| Ridge  | Almost Perfect corr | 1.079490 | 0.2656926 |
+| Ridge  | High Corr           | 1.232065 | 0.3131289 |

@@ -6,28 +6,63 @@ editor: visual
 
 ### **1. Scientific or Statistical Question**
 
--   Question: How do private prisons and state prisons spend money differently? Does this uncover any underlying patterns amongst private or state prisons?
+I want to identify if there are significant differences between lasso, ridge, and linear regression for data that is not correlated, mildly correlated, highly correlated, and almost perfectly correlated.
+
+------------------------------------------------------------------------
 
 ### **2. Data**
 
--   Data generating model: Features in data: Prison Unit ADP UNIT_DIRECT COMPLEX_DIRECT TOTAL_DIRECT TOTAL_INDIRECT TOTAL_EXPENSE Annual Per Capita Cost - Direct Annual Per Capita Cost - Indirect Annual Per Capita Cost - Total Daily Per Capita Cost
+15 x variables are generated and 1 y variable is generated. The x variables are randomly generated from a multivariate normal distribution with equal pairwise correlation values, 0.10 for no correlation, 0.50 for mild correlation, 0.95 for high correlation, or 0.99 for almost perfect correlation.
 
--   Some of these features can be calculated from others. So if we simulate ADP, UNIT_DIRECT, COMPLEX_DIRECT, and TOTAL_DIRECT we can calculate the rest of the values.
+y = 1 \* x2 + 2 \*x3 + 3 \* x4 + 4 \* x5 + noise
 
--   These are the calculated features: TOTAL_DIRECT = UNIT_DIRECT + COMPLEX_DIRECT, TOTAL_EXPENSE = TOTAL_DIRECT + TOTAL_INDIRECT, `Annual Per Capita Cost - Direct` = `TOTAL_DIRECT / ADP, Annual Per Capita Cost - Indirect` = `TOTAL_INDIRECT / ADP, Annual Per Capita Cost - Total` = `TOTAL_EXPENSE / ADP, Daily Per Capita Cost` = `Annual Per Capita Cost - Total / 365`
+noise is a random multivariate number.
 
--   Data-generating model: Let i=1,2,…,ni = 1, 2, \dots, ni=1,2,…,n index each prison unit.
-
-    -   ADPi​∼UniformDiscrete(200,1300). We assume ADP follows a discrete uniform distribution between 200 and 1300.
-
-    -   UNIT_DIRECTi​=ADPi​⋅Ui​,Ui​∼N(15,000,3,0002) COMPLEX_DIRECTi=ADPi⋅Ci,Ci∼N(6,000,1,5002)\text{COMPLEX\_DIRECT}\_i = \text{ADP}\_i \cdot C_i, \quad C_i \sim \mathcal{N}(6{,}000, 1{,}500\^2)COMPLEX_DIRECTi​=ADPi​⋅Ci​,Ci​∼N(6,000,1,5002) Direct costs are modeled as **proportional to population** with normally distributed per capita costs.
-
-    -   TOTAL_INDIRECTi​=ADPi​⋅Ii​,Ii​∼N(1,500,5002)
-
-    -   Derived Values: Formulas are found above.
+------------------------------------------------------------------------
 
 ### **3. Estimates**
 
--   What quantity or quantities are you estimating via simulation? i.e. what is your response variable(s)?
+I am estimating if y can be predicted from all 15x's by linear, ridge, and lasso regression. It is replicated 100 times for each correlation and each model. Each model's performance is measured by MSE. Models are trained on 70% of each dataset and tested on 30%. The data is split into train_x, train_y, test_x, and test_y data. The models attempt to learn the relationship between train_x and train_y. Then, they attempt to predict test_y values for given test_x data. The difference between the predicted test_y values and the true y values is calculated by MSE.
 
--   Use clear mathematical notation to define what you are calculating. Some ideas: bias, variance, power, MSE, deviance, etc.).
+------------------------------------------------------------------------
+
+### **4. Methods**
+
+I evaluate Linear Regression, Ridge Regression (alpha = 0), and Lasso Regression (alpha = 1).\
+All models are fit using the same train/test split per dataset.\
+I hypothesize that Lasso will perform better in high correlation settings due to its variable selection property.\
+Ridge is expected to perform better than Linear in highly correlated settings.
+
+------------------------------------------------------------------------
+
+### **5. Performance Criteria**
+
+I will use Mean Squared Error to estimate the differences. This is calculated as a summary of all repetitions. I will compare the models by model type and by correlation.
+
+------------------------------------------------------------------------
+
+### **6. Simulation Plan**
+
+-   100 simulations per correlation level (4 total)
+
+-   Each simulation generates 100 observations
+
+-   3 models run per simulation
+
+-   Train/test split = 70/30
+
+-   MSE is recorded for each run
+
+-   No major changes from Project III, but data and correlation structure expanded
+
+------------------------------------------------------------------------
+
+### **7. Anticipated Challenges or Limitations**
+
+-   Runtime increases due to nested simulations
+
+-   Model assumptions (e.g., linearity, normality) may not hold in practice
+
+-   Random variability in small sample sizes
+
+-   Extensions: try larger nnn, tune lambda via cross-validation, include variable selection metrics like number of non-zero coefficients in Lasso
