@@ -38,13 +38,31 @@ Private prisons have less Direct and Indirect Annual Per Capita Cost than State 
 
 ![![](images/Private_Prison_Annual_Per_Capita_Cost_Direct_Distribution.png)](images/Private_Prison_ADP_Distribution.png)
 
-![](images/Private_Prison_Annual_Per_Capita_Cost_Indirect_Distribution.png)
+![![](images/Private_Prison_Annual_Per_Capita_Cost_Total_Distribution.png)](images/Private_Prison_Annual_Per_Capita_Cost_Indirect_Distribution.png)
+
+![![](images/Private_Prison_Complex_Direct_Distribution.png)](images/Private_Prisons_Daily_Per_Capita_Cost_Distribution.png)
+
+![![](images/Private_Prison_Total_Expense_Distribution.png)](images/Private_Prison_Total_Direct_Distribution.png)
+
+![![](images/Private_Prison_Unit_Direct_Distribution.png)](images/Private_Prison_Total_Indirect_Distribution.png)
 
 **State Prison Distributions:**
 
 ![](images/ADP_Distribution.png)
 
 ![![](images/Annual_Per_Capita_Cost_Indirect_Distribution.png)](images/Annual_Per_Capita_Cost_Direct_Distribution.png)
+
+![![](images/Daily_Per_Capita_Cost_Distribution.png)](images/Annual_Per_Capita_Cost_Total_Distribution.png)
+
+![](images/Complex_Direct_Distribution.png)
+
+![](images/Total_Direct_Distribution.png)
+
+![](images/Total_Expense_Distribution.png)
+
+![](images/Total_Indirect_Distribution.png)
+
+![](images/Unit_Direct_Distribution.png)
 
 **Project 3**
 
@@ -92,7 +110,39 @@ Annual Per Capita Cost - Total
 
 This suggests that Annual Per Capita Cost - Indirect is relevant to Private Prisons but not State Prisons.
 
-**Regression**
+**Individual Regression**
+
+I conducted regression to quantify how prison type and ADP effects cost metrics. I controlled for number of prisoners by only looking at the per capita measures.
+
+For Per Capita Cost - Direct, there is no clear relationship with Private Data. There is a negative relationship with variance for Per Capita Cost - Indirect with Private Data. State Data shows a clear negative relationship for both Per Capita Cost - Direct and Per Capita Cost - Indirect.
+
+![](images/Individual_Regression-01.png)
+
+The following plots show how regression for State Data performed. For the **Residuals plot (top left), n**on-randomness suggests a linear relationship may not accurately capture relationship. For the **Q-Q Plot (top right), the d**iagonal suggests a normal distribution which is desired. For the **Scale-Location Plot (bottom left), the relatively f**lat line suggests constant variance which is desired. For the **Residuals vs. Leverage (bottom right), the** inflection points suggest one point has high influence.
+
+![](images/individual_regression_state-01.png)
+
+The following plots show how regression for Private Data performed. Since there was few points, the plots show that regression may not accurately capture the relationship. For the **Residuals (top left), a** non-randomness plot suggests heteroscedasticity. For the **Q-Q Plot (top right),** a diagonal means normal distribution. For the **Scale-Location Plot (bottom left), a** non-flat plot suggests heteroscedasticity. For the **Residuals vs. Leverage (bottom right),** inflection points suggest one point has high influence.
+
+![](images/individual_regression_private-01.png)
+
+The coefficients of regression were significant in all of the tested cases:
+
+State: Annual Per Capita Cost - Direct \~ ADP
+
+![](images/Screenshot 2025-06-09 at 11.28.19 PM.png){width="276"}
+
+State: Annual Per Capita Cost - Indirect \~ ADP
+
+![](images/Screenshot 2025-06-09 at 11.28.25 PM.png){width="281"}
+
+Private: Annual Per Capita Cost - Direct \~ ADP
+
+![](images/Screenshot 2025-06-09 at 11.28.33 PM.png){width="277"}
+
+Private: Annual Per Capita Cost - Indirect \~ ADP
+
+![](images/Screenshot 2025-06-09 at 11.28.38 PM.png){width="274"}
 
 Project 4
 
