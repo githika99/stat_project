@@ -15,6 +15,12 @@ Models are evaluated using Mean Squared Error (MSE), and results are summarized 
 ## Setup
 
 ```{r}
+install.packages("tidyverse")
+install.packages("glmnet")
+install.packages("broom")
+```
+
+```{r}
 library(tidyverse)
 library(glmnet)
 library(broom)
@@ -43,61 +49,58 @@ generate_data <- function(n = 100, correlation = 0.0) {
   # Combine into a tibble and return
   return(tibble::tibble(x_list, y = y))
 }
-
-"""
-def generate_data(n=100, correlation=0.0):
-    mean = [0, 0]
-    cov = [[1, correlation], [correlation, 1]]
-    X = np.random.multivariate_normal(mean, cov, size=n)
-    x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15 = X[:, 0], X[:, 1], X[:, 2], X[:, 3], X[:, 4], X[:, 5], X[:, 6], X[:, 7], X[:, 8], X[:, 9], X[:, 10], X[:, 11], X[:, 12], X[:, 13], X[:, 14]
-    noise = np.random.normal(0, 1, size=n)
-    y = 0 * x1 + 1 * x2 + 2 * x3 + 3 * x4 + 4 * x5 + 0 * x6 + 0 * x7 + 0 * x8 + 0 * x9 + 0 * x10  + 0 * x11 + 0 * x12 + 0 * x13 + 0 * x14 + 0 * x15 + noise
-    return pd.DataFrame({'x1': x1, 'x2': x2, 'x3': x3, 'x4': x4, 'x5': x5, 'x6': x6, 'x7': x7,  'x8': x8,  'x9': x9,  'x10': x10,  'x11': x11,  'x12': x12,  'x13': x13,  'x14': x14,  'x15': x15, 'y': y})
-"""
 ```
 
 ## Simulation Loop with `map`
 
 ```{r}
 correlations <- tibble(
-  label = c("No Corr", "Mild Corr", "High Corr"),
-  rho = c(0.0, 0.5, 0.99)
+  label = c("No Corr", "Mild Corr", "High Corr", "Almost Perfect corr"),
+  rho = c(0.10, 0.50, 0.95, 0.999999)
 )
 
 models <- c("Linear", "Ridge", "Lasso")
 
-simulate_one <- function(df, model_name) {
-  split <- initial_split(df, prop = 0.7)
-  train <- training(split)
-  test <- testing(split)
-  x_train <- as.matrix(select(train, x1, x2))
-  x_test <- as.matrix(select(test, x1, x2))
-  y_train <- train$y
-  y_test <- test$y
-
+# Modified simulate_one function to take train and test directly
+simulate_one <- function(train_data, test_data, model_name) {
+  # For glmnet, you need the x_train/x_test matrices and y_train/y_test vectors
+  # For lm, you can use the data frame directly.
+  # We select all 'x' columns dynamically.
+  x_cols <- paste0("x", 1:15)
+  
+  x_train <- as.matrix(select(train_data, all_of(x_cols)))
+  x_test <- as.matrix(select(test_data, all_of(x_cols)))
+  y_train <- train_data$y
+  y_test <- test_data$y
+  
   fit <- switch(model_name,
-    "Linear" = lm(y ~ x1 + x2, data = train),
-    "Ridge" = glmnet(x_train, y_train, alpha = 0, lambda = 0.1),
-    "Lasso" = glmnet(x_train, y_train, alpha = 1, lambda = 0.1)
+                "Linear" = lm(y ~ ., data = train_data), # Use '.' for all predictors in 'train_data'
+                "Ridge" = glmnet(x_train, y_train, alpha = 0, lambda = 0.1),
+                "Lasso" = glmnet(x_train, y_train, alpha = 1, lambda = 0.1)
   )
-
+  
   preds <- if (model_name == "Linear") {
-    predict(fit, newdata = test)
+    predict(fit, newdata = test_data)
   } else {
     predict(fit, newx = x_test, s = ifelse(model_name == "Ridge", 1, 0.1))
   }
-
+  
   mse <- mean((y_test - preds)^2)
   tibble(Model = model_name, MSE = mse)
 }
 
-library(rsample)
-
 # Run models on each dataset
 results <- correlations %>%
-  mutate(simulations = map(rho, ~ replicate(10, generate_data(correlation = .x), simplify = FALSE))) %>%
+  mutate(simulations = map(rho, ~ replicate(100, generate_data(correlation = .x), simplify = FALSE))) %>%
   unnest(simulations) %>%
-  mutate(results = map(simulations, ~ map_dfr(models, function(model) simulate_one(., model)))) %>%
+  # Now, for each 'simulations' (which is a full df), create a split
+  mutate(data_split = map(simulations, ~ initial_split(.x, prop = 0.7))) %>%
+  mutate(train_df = map(data_split, training),
+         test_df = map(data_split, testing)) %>%
+  # Pass train_df and test_df to simulate_one
+  mutate(results = pmap(list(train_df, test_df), function(tr, te) {
+    map_dfr(models, ~ simulate_one(train_data = tr, test_data = te, model_name = .x))
+  })) %>%
   unnest(results)
 ```
 
@@ -111,16 +114,20 @@ summary <- results %>%
     SD_MSE = sd(MSE),
     .groups = 'drop'
   )
-
 summary
 ```
 
-## Visualization 
+## Visualization
 
 ```{r}
+ggplot(results, aes(x = Model, y = MSE, fill = label)) +
+  geom_boxplot() +
+  labs(title = "Model MSE by Predictor Correlation (All Xs)", x = "Correlation", y = "MSE") +
+  theme_minimal()
+
 ggplot(results, aes(x = label, y = MSE, fill = Model)) +
   geom_boxplot() +
-  labs(title = "Model MSE by Predictor Correlation", x = "Correlation", y = "MSE") +
+  labs(title = "Model MSE by Predictor Correlation (All Xs)", x = "Correlation", y = "MSE") +
   theme_minimal()
 ```
 
@@ -149,7 +156,6 @@ plot(tukey_results)
 What if we don't have normal residuals?
 
 ```{r}
-
 # Kruskal-Wallis for 'label'
 kruskal.test(MSE ~ label, data = results)
 
@@ -160,5 +166,5 @@ kruskal.test(MSE ~ Model, data = results)
 
 # Pairwise comparisons for 'label'
 pairwise.wilcox.test(results$MSE, results$label, p.adjust.method = "holm")
-
+pairwise.wilcox.test(results$MSE, results$Model, p.adjust.method = "holm")
 ```
