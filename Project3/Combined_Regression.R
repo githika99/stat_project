@@ -1,10 +1,6 @@
 install.packages(c("aod", "ggplot2", "tidyverse"))
 library(aod)
 library(ggplot2)
-# Install necessary packages if not already installed
-# install.packages(c("tidyverse"))
-
-# Load libraries
 library(tidyverse)
 
 # --- Load and label datasets ---
@@ -44,7 +40,7 @@ direct_plot_df <- data.frame(Annual_Per_Capita_Cost_Direct = cost_direct_seq)
 direct_plot_df$prob <- predict(model_direct, newdata = direct_plot_df, type = "response")
 
 # --- Logistic Regression: Indirect Cost Only ---
-model_indirectADP <- glm(PrivateBinary ~ ADP, 
+model_indirect <- glm(PrivateBinary ~ Annual_Per_Capita_Cost_Indirect, 
                       data = combined_data, 
                       family = "binomial")
 
