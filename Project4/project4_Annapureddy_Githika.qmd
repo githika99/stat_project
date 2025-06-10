@@ -1,5 +1,5 @@
 ---
-title: "Project_4_Report"
+title: "project4_Annapureddy_Githika"
 format: pdf
 editor: visual
 ---
@@ -20,8 +20,7 @@ editor: visual
 
     -   ADPi​∼UniformDiscrete(200,1300). We assume ADP follows a discrete uniform distribution between 200 and 1300.
 
-    -   UNIT_DIRECTi​=ADPi​⋅Ui​,Ui​∼N(15,000,3,0002)
-        COMPLEX_DIRECTi=ADPi⋅Ci,Ci∼N(6,000,1,5002)\text{COMPLEX\_DIRECT}_i = \text{ADP}_i \cdot C_i, \quad C_i \sim \mathcal{N}(6{,}000, 1{,}500^2)COMPLEX_DIRECTi​=ADPi​⋅Ci​,Ci​∼N(6,000,1,5002) Direct costs are modeled as **proportional to population** with normally distributed per capita costs.
+    -   UNIT_DIRECTi​=ADPi​⋅Ui​,Ui​∼N(15,000,3,0002) COMPLEX_DIRECTi=ADPi⋅Ci,Ci∼N(6,000,1,5002)\text{COMPLEX\_DIRECT}\_i = \text{ADP}\_i \cdot C_i, \quad C_i \sim \mathcal{N}(6{,}000, 1{,}500\^2)COMPLEX_DIRECTi​=ADPi​⋅Ci​,Ci​∼N(6,000,1,5002) Direct costs are modeled as **proportional to population** with normally distributed per capita costs.
 
     -   TOTAL_INDIRECTi​=ADPi​⋅Ii​,Ii​∼N(1,500,5002)
 

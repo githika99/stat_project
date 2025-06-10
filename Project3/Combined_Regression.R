@@ -44,7 +44,7 @@ direct_plot_df <- data.frame(Annual_Per_Capita_Cost_Direct = cost_direct_seq)
 direct_plot_df$prob <- predict(model_direct, newdata = direct_plot_df, type = "response")
 
 # --- Logistic Regression: Indirect Cost Only ---
-model_indirect <- glm(PrivateBinary ~ Annual_Per_Capita_Cost_Indirect, 
+model_indirectADP <- glm(PrivateBinary ~ ADP, 
                       data = combined_data, 
                       family = "binomial")
 
@@ -81,4 +81,7 @@ ggplot() +
        x = "Annual Per Capita Cost - Indirect",
        y = "Predicted Probability of Being Private") +
   theme_minimal()
+
+summary(model_direct)
+summary(model_indirect)
 

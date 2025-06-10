@@ -1,11 +1,24 @@
-# Distributions for each variable across private and public
+---
+title: "eda"
+format: html
+editor: visual
+---
+
+## EDA
+
+```{r}
 install.packages("ggplot2")
 install.packages("tidyverse")
 install.packages("scales")
+```
+
+```{r}
 library(ggplot2)
 library(tidyverse)
 library(scales)
+```
 
+```{r}
 # Load Data
 shorter_dataset <- read_csv("./Project1/data/Processed_Data/State_Prison_Revenue.csv")
 shorter_dataset <- shorter_dataset[!grepl("Total", shorter_dataset$`Prison Unit`, ignore.case = TRUE), ] #ignore all rows that include the word Total
@@ -17,7 +30,9 @@ private_dataset <- private_dataset %>% mutate(Type = "Private")
 
 # Combine the datasets
 combined_data <- bind_rows(shorter_dataset, private_dataset)
+```
 
+```{r}
 # Scatter plot 1: ADP vs. Annual Per Capita Cost - Direct
 ggplot(combined_data, aes(x = ADP, y = `Annual Per Capita Cost - Direct`, color = Type)) +
   geom_point(size = 3, alpha = 0.7) +
@@ -33,8 +48,9 @@ ggplot(combined_data, aes(x = ADP, y = `Annual Per Capita Cost - Indirect`, colo
        x = "Average Daily Population (ADP)",
        y = "Annual Per Capita Cost - Indirect") +
   theme_minimal()
+```
 
-
+```{r}
 # State Prisons
 p <- ggplot(shorter_dataset, aes(x = `ADP`)) +
   geom_histogram(aes(y = ..density..), bins = 30, fill = "skyblue", color = "black", alpha = 0.6) +
@@ -115,7 +131,9 @@ p <- ggplot(shorter_dataset, aes(x = `Daily Per Capita Cost`)) +
   labs(title = "Distribution of Daily Per Capita Cost", x = "Daily Per Capita Cost", y = "Count")
 
 print(p)
+```
 
+```{r}
 # Private Prisons
 p <- ggplot(private_dataset, aes(x = `ADP`)) +
   geom_histogram(bins = 30, fill = "skyblue", color = "black") +
@@ -187,6 +205,4 @@ p <- ggplot(private_dataset, aes(x = `Daily Per Capita Cost`)) +
   labs(title = "Private Prison: Distribution of Daily Per Capita Cost", x = "Daily Per Capita Cost", y = "Count")
 
 print(p)
-
-#Private_Prison_ADP_Distribution.png
-
+```

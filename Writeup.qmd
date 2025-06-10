@@ -1,0 +1,99 @@
+---
+title: "Writeup"
+format: pdf
+editor: visual
+---
+
+## Writeup
+
+**Project 1**
+
+Both the pdfs “Arizona_Department_of_Correction_Inmate_Fact_Sheet_2020.pdf” and “Arizona_Department_of_Corrections_Cost_Report_2020.pdf” which can be found in ./data/Raw_Data are reports released by the [Arizona Department of Corrections,](https://azlibrary.gov/sla/agency_histories/department-corrections)[Rehabilitation](https://corrections.az.gov/data-reports)[& Reentry](https://azlibrary.gov/sla/agency_histories/department-corrections).
+
+In order to extract tables from these pdf reports into csv files, I first used Adobe Acrobat to turn the pdf files into xlsx files. The xlsx versions of these files can also be found in ./data/Raw_Data. Then, I used Excel to inspect these files and identify which tables I wanted to extract. Each table was extracted into its own csv file.
+
+## **Cost Report**
+
+The Cost Report could not easily be saved as a csv file because it had images and text that was not in a table. Thus, saving it as a csv would cause information to be lost. Thus, I decided to extract the individual tables that were relevant to me from the xlsx file. The R script “Cost_Report_Data_Cleaning.R” extracts these tables into csv files. The focus of my project is the difference in expenditures between private and public prison units. Thus, although the report has lots of interesting information, I focused on tables directly related to this.
+
+I extracted the Expenditure Summary table on page 8 of the pdf. In this table, I only extracted the information from the Private Prisons. The information on private prisons was organized by unit. I extracted the entire table from pages 10 and 11 of the pdf, which contains information on State Prison Expenditure by Prison Unit. Since both the extracted data for Private and Public prisons was then organized by unit, I could compare the data.
+
+These extracted csv files are saved in ./data/Processed_Data as follows:
+
+-   [Private_Prison_Revenue.csv](https://github.com/githika99/stat_project/blob/main/Project1/data/Processed_Data/Private_Prison_Revenue.csv "Private_Prison_Revenue.csv")
+
+-   [State_Prison_Revenue.csv](https://github.com/githika99/stat_project/blob/main/Project1/data/Processed_Data/State_Prison_Revenue.csv "State_Prison_Revenue.csv")
+
+Project 2
+
+**Multivariate Plot:**
+
+Private prisons have less Direct and Indirect Annual Per Capita Cost than State prisons. Direct Costs are tied to the operation of a specific prison facility or unit. They include salaries for staff; food, clothing, and hygiene products for inmates; utilities (electricity, water, etc.) used in the facility; and facility maintenance. Indirect costs are shared or overhead costs that support the prison system but aren’t directly linked to one facility. They include central administration salaries (e.g., the state corrections department headquarters); IT systems that serve multiple facilities; legal services and oversight; state-level contracting or procurement services; and training programs for correctional officers across facilities.
+
+![](images/Annual_Per_Capita_Direct_vs_ADP.png)
+
+![](images/Annual_Per_Capita_Indirect_vs_ADP.png)
+
+**Private Prison Distributions:**
+
+![![](images/Private_Prison_Annual_Per_Capita_Cost_Direct_Distribution.png)](images/Private_Prison_ADP_Distribution.png)
+
+![](images/Private_Prison_Annual_Per_Capita_Cost_Indirect_Distribution.png)
+
+**State Prison Distributions:**
+
+![](images/ADP_Distribution.png)
+
+![![](images/Annual_Per_Capita_Cost_Indirect_Distribution.png)](images/Annual_Per_Capita_Cost_Direct_Distribution.png)
+
+**Project 3**
+
+# **Model**
+
+In order to analyze the difference between private and public prisons, I used Principle Component Analysis. After reducing dimensionality with PCA, I created a plot in which private and public prisons are colored differently.
+
+**Analysis**
+
+**PCA**
+
+The PCA Graph shows that State prisons are more consistent in how they operate per inmate and Private prisons are more varied and some diverge significantly from the state cluster. The difference is not significant enough to determine that all private prisons are different from all state prisons.
+
+![](images/PCA_Plot.png)
+
+The scree plot for private prisons shows that PCA1 and PCA2 have non-zero variances. This implies PCA found two patterns in the data.
+
+The scree plot for state prisons shows that only PCA1 has a non-zero variance. This implies PCA found only one pattern in the data.
+
+![](images/Scree_Plot_Private.png)
+
+![](images/Scree_Plot_State.png)
+
+These are the features in the PCA components:
+
+PC1 (State) and PC1 (Private):
+
+Annual Per Capita Cost - Total
+
+Daily Per Capita Cost
+
+Annual Per Capita Cost - Direct
+
+Annual Per Capita Cost - Indirect
+
+PC2 (Private):
+
+Annual Per Capita Cost - Indirect
+
+Annual Per Capita Cost - Direct
+
+Daily Per Capita Cost
+
+Annual Per Capita Cost - Total
+
+This suggests that Annual Per Capita Cost - Indirect is relevant to Private Prisons but not State Prisons.
+
+**Regression**
+
+Project 4
+
+## 
